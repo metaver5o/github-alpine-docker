@@ -10,7 +10,7 @@ I believe you already have the following files: <br>
 
 After replace with your own info, just run: <br>
  ``` docker build -t image_name . && \ ```
- docker run -ti -d \ 
+ ```docker run -ti -d \ 
  --name github \ 
  -h github \ 
  --restart always \ 
