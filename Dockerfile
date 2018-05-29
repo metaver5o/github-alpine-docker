@@ -3,8 +3,8 @@ LABEL maintainer="Marco Matos marco@marco.ae"
 
     RUN apk add --update make git openssh gnupg vim
     
-    ENV user-name <COLOQUE AQUI SEU USERNAME>
-    
+    ENV user-name <CHANGE WITH DESIRED USERNAME HERE>
+
     RUN adduser -D -u 1000 ${user-name}
     WORKDIR /home/${user-name}
     
