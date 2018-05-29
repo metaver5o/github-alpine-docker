@@ -1,0 +1,10 @@
+[user]
+	name = <YOUR NAME HERE>
+	email = <YOUR EMAIL HERE>
+# replace with your signing key, get it with command
+# gpg --list-secret-keys --keyid-format LONG|grep sec|sed 's/\// /'|awk {'print $3'}
+	signingkey = 3AA5C34371567BD2  
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
