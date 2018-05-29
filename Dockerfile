@@ -26,6 +26,7 @@ LABEL maintainer="Marco Matos marco@marco.ae"
     RUN git config --global user.email "seu@email.com"
     RUN git config --global core.editor vim  
     RUN git config --global gpg.program gpg2
+    RUN ssh-keyscan -H github.com
     ENV GPG_TTY /dev/pts/0 
 
     CMD [ "/bin/sh" ]
