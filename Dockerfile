@@ -33,8 +33,9 @@ LABEL maintainer="Marco Matos contato@marcomatos.com"
     USER root 
     RUN pass=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1` \ 
         && echo 'root:${pass}' | chpasswd 
-    RUN sed -i '/root/s/sh/false/g' /etc/passwd
 #        && usermod -s /bin/false root
+
+    RUN sed -i '/root/s/sh/false/g' /etc/passwd
 
     USER ${user-name}
     CMD [ "/bin/sh" ]
