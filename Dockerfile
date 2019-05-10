@@ -1,7 +1,7 @@
 FROM alpine
-LABEL maintainer="Marco Matos marco@marco.ae"
+LABEL maintainer="Marco Matos contato@marcomatos.com"
 
-    RUN apk add --update make git openssh gnupg vim
+    RUN apk add --update make git openssh gnupg vim shadow
     
     ENV user-name <CHANGE WITH DESIRED USERNAME HERE>
 
@@ -29,4 +29,12 @@ LABEL maintainer="Marco Matos marco@marco.ae"
     RUN ssh-keyscan -H github.com
     ENV GPG_TTY /dev/pts/0 
 
+# fixing alpine root vulnerability
+    USER root 
+    RUN pass=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n 1` \ 
+        && echo 'root:${pass}' | chpasswd 
+    RUN sed -i '/root/s/sh/false/g' /etc/passwd
+#        && usermod -s /bin/false root
+
+    USER ${user-name}
     CMD [ "/bin/sh" ]
